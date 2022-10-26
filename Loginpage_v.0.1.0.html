@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login and Registration page</title>
+        <link rel="stylesheet" href="LoginPage_Iteration1_Style.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel=' stylesheet'>
+    </head>
+
+    <body>
+        <div class="hero">
+            <div class="form-box">
+
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+
+                <div class="social-icons">
+                    <img src="fb.png">
+                    <img src="tw.png">
+                    <img src="gp.png">
+                </div>
+
+                <form name="suForm" id="supform" action="submitted.html" class="input-group">
+                    <div class="box">  
+                        <input type="text" class="input-field" id="User" onclick="resetBtn()" placeholder="User Id" onmouseover="trial()"> 
+                    </div>
+                    <div class="box"> 
+                        <input type="password" id='pass' class="input-field"
+                        onclick="resetBtn()" placeholder="Enter Password">
+                        
+                    </div>
+                    <div class="fp">
+                        <label><a href=''>Forgotten Password?</a></label>
+                    </div>
+                    
+                    <input type="submit" class="submit-btn" id="submit-btn" value="Log In" onmouseover="mouseOver()">
+
+                </form>
+
+                <form id="register" class="input-group">
+                    <input type="text" class="input-field" placeholder="User Id" required>
+                    <input type="email" class="input-field" placeholder="Email-Id" required>
+                    <input type="text" class="input-field" placeholder="Enter Password"
+                    required>
+                    <input type="checkbox" class="chech-box"><span>I agree to the terms & conditions</span>
+                    <button type="submit" class="submit-btn2">Register</button>
+                </form>
+
+            </div> 
+        </div>
+
+        <script>
+        
+            var a = 0;
+
+            var x=document.getElementById("supform");
+            var y=document.getElementById("register");
+            var z=document.getElementById("btn");
+
+            function register(){
+                x.style.left ='-400px';
+                y.style.left ='50px';
+                z.style.left = '110px';
+            }
+
+            function login(){
+                x.style.left ='50px';
+                y.style.left ='450px';
+                z.style.left ='0px';
+            }
+
+
+            function mouseOver(){
+                const pass = document.forms['suForm']['pass'].value;
+
+                if(( pass == "") && a==0){
+                    buttonMoveRight();
+                    a = 1;
+                    return false;
+                } 
+
+                if(( pass == "") && a==1){
+                    buttonMoveLeft();
+                    a = 2;
+                    return false;
+                } 
+
+                if((pass == "") && a==2){
+                    buttonMoveRight();
+                    a = 1;
+                    return false;
+                } 
+
+                else{
+                    // document.getElementById('submit-btn').click();  
+                    document.getElementById('submit-btn').style.cursor = 'pointer';
+                    return false;
+                };
+            };
+
+
+        
+
+            function buttonMoveLeft(){
+
+                const button = document.getElementById('submit-btn');
+                button.style.transform = 'translateX(0%)';
+
+            };
+
+
+            function buttonMoveRight(){
+
+                const button = document.getElementById('submit-btn');
+                button.style.transform = 'translateX(150%)';
+
+            };
+
+
+            function resetBtn(){
+                const button = document.getElementById('submit-btn');
+                button.style.transform = 'translateX(0%)';
+            };
+                
+        </script>   
+    </body>
+</html>
